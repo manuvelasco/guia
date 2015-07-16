@@ -1,0 +1,34 @@
+<?php
+/*Implementacion hook_form_alter*/
+
+ function guia_form_alter(&$form, &$form_state, $form_id) {
+     dsm($form_id);
+     
+     if ($form_id == 'empresa_node_form') {
+         dsm($form);
+         //dsm($form_state);
+
+
+
+         $lang = $form['field_sucursales_empresa']['#language'];
+
+
+//         $form_state['field']['field_sucursales_empresa']['und']['instance']['required']=1
+
+         $array = $form['field_sucursales_empresa'][$lang];
+         dsm($array);
+
+         foreach ($array as $clave => $valor) {
+
+             echo($clave);
+
+/*dsm($form[$valor]);
+               $form[$valor]['nid']['#autocomplete_path'] = "";*/
+           }
+
+         
+         $form['field_sucursales_empresa'][$lang][0]['nid']['#autocomplete_path']="";
+     }
+
+     
+ }
