@@ -1,0 +1,26 @@
+<?php
+/*Implementacion hook_form_alter*/
+
+ function guia_form_alter(&$form, &$form_state, $form_id) {
+     //dsm($form_id);
+     
+     if ($form_id == 'page_node_form') {
+         //dsm($form);
+
+	$lang = $form['field_articulo']['#language'];
+
+	$array = $form['field_articulo'][$lang];
+
+
+	for($i = 0; $i <= count($array)-14;$i++){
+
+		$form['field_articulo'][$lang][$i]['nid']['#autocomplete_path']="";
+
+	}
+
+
+
+     }
+
+     
+ }
